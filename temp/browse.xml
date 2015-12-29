@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><atv>
+  <body>
+    <listScrollerSplit id="com.sample.list-scroller-split">
+      <header>
+        <simpleHeader>
+          <title>iTunes Movie Trailers</title>
+        </simpleHeader>
+      </header>
+      <menu>
+        <sections>
+          <menuSection>
+	        <header>
+              <textDivider alignment="left">
+                <title>Genres</title>
+              </textDivider>
+            </header>
+            <items>
+
+					            	<oneLineMenuItem id="list_1">
+	                	<label>Action and Adventure</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/action_and_adventure/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_2">
+	                	<label>Comedy</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/comedy/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_3">
+	                	<label>Documentary</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/documentary/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_4">
+	                	<label>Drama</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/drama/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_5">
+	                	<label>Family</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/family/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_6">
+	                	<label>Fantasy</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/fantasy/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_7">
+	                	<label>Foreign</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/foreign/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_8">
+	                	<label>Horror</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/horror/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_9">
+	                	<label>Musical</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/musical/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_10">
+	                	<label>Romance</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/romance/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_11">
+	                	<label>Science Fiction</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/science_fiction/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+					            	<oneLineMenuItem id="list_12">
+	                	<label>Thriller</label>
+	                	<preview>
+	                  		<link>https://trailers.apple.com/appletv/us/genres/thriller/index.xml</link>
+		            	</preview>
+	            	</oneLineMenuItem>
+				            </items>
+          </menuSection>
+        </sections>
+      </menu>
+    </listScrollerSplit>
+  </body>
+</atv>

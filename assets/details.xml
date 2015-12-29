@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><atv>
+  <head>
+		<script src="https://trailers.apple.com/appletv/us/js/main.js" />
+		<script src="https://trailers.apple.com/appletv/us/js/Trailers.js" />
+		<script src="https://trailers.apple.com/appletv/us/js/Trailers.Showtimes.js" />
+		<script src="https://trailers.apple.com/appletv/us/js/Trailers.Log.js" />
+		<script src="https://trailers.apple.com/appletv/us/js/showtimesconfig.js" />
+			<stash>
+				<id>17119</id>
+				<fandangoId></fandangoId>
+								<title>Remember</title>
+				<releasedate>2016-02-12</releasedate>
+				<studio>Independent</studio>
+				<runtime>95</runtime>
+				<rating>R</rating>
+			</stash>
+  </head>
+  <body>
+    <itemDetail id="com.apple.trailers">
+      <title>Remember</title>
+      <subtitle>Independent</subtitle>
+      <rating>R</rating>
+      <summary>Remember tells the story of Zev Guttman (Academy Award® Winner Christopher Plummer), a 90-year-old struggling with memory loss who is living out his final years in a serene retirement home. A week following the death of his beloved wife Ruth, he suddenly gets a mysterious package from his close friend Max (Academy Award® Winner Martin Landau), containing a stack of money and a letter detailing a shocking plan. Both Zev and Max were prisoners in Auschwitz, and the same sadistic guard was responsible for the death of both their families—a guard who, immediately after the war, escaped Germany and has been living in the U.S. ever since under an assumed identity. Max is wheelchair-bound but in full command of his mental faculties; with his guidance, Zev will embark on a cross-continental road-trip to bring justice once and for all to the man who destroyed both their lives.</summary>
+      <image style="moviePoster">https://trailers.apple.com/trailers/independent/remember/images/poster-xlarge.jpg</image>
+      <defaultImage>resource://Poster.png</defaultImage>
+            <table>
+                                <columnDefinitions>
+      	   <columnDefinition width="25" alignment="left">
+        	  <title>Details</title>
+      	   </columnDefinition>
+          	          <columnDefinition width="25" alignment="left">
+	            <title>Actors</title>
+	          </columnDefinition>
+	                	          <columnDefinition width="25" alignment="left">
+	            <title>Director</title>
+	          </columnDefinition>
+	                	          <columnDefinition width="25" alignment="left">
+	            <title>Writer</title>
+	          </columnDefinition>
+	              </columnDefinitions>
+		<rows>
+		  			<row>
+															<label>Thriller</label>
+																								<label>Christopher Plummer</label>
+																								<label>Atom Egoyan</label>
+																								<label>Benjamin August</label>
+												</row>
+		  			<row>
+															<label>In Theaters 2/12/16</label>
+																								<label>Martin Landau</label>
+																								<label/>
+																								<label/>
+												</row>
+		  			<row>
+									<label/>
+																			<label>Bruno Ganz</label>
+																								<label/>
+																								<label/>
+												</row>
+		  			<row>
+									<label/>
+																			<label>Jurgen Pruchnow</label>
+																								<label/>
+																								<label/>
+												</row>
+		  			<row>
+									<label/>
+																			<label>Heinz Lieven</label>
+																								<label/>
+																								<label/>
+												</row>
+		          </rows>
+      </table>
+      <centerShelf>
+        <shelf id="centerShelf" columnCount="4" center="true">
+          <sections>
+            <shelfSection>
+              <items>
+					                <actionButton id="play" onSelect="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/remember/videos/trailer-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/remember/videos/trailer-hd.xml');">
+	                  <title>Play</title>
+	                  <image>resource://Play.png</image>
+	                  <focusedImage>resource://PlayFocused.png</focusedImage>
+					  <badge>HD</badge>	                </actionButton>
+																              </items>
+            </shelfSection>
+          </sections>
+        </shelf>
+      </centerShelf>
+      <divider>
+  		<smallCollectionDivider alignment="left">
+          <title>More Thriller</title>
+        </smallCollectionDivider>
+      </divider>
+      <bottomShelf>
+        <shelf id="bottomShelf" columnCount="8">
+          <sections>
+            <shelfSection>
+              <items>
+
+						 			<moviePoster id="shelf_item_1" accessibilityLabel="Misconduct" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/lions_gate/misconduct/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/lions_gate/misconduct/videos/trailer-hd.xml');">
+		              <title>Misconduct</title>
+		              <image>https://trailers.apple.com/trailers/lions_gate/misconduct/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_2" accessibilityLabel="Mojave" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/mojave/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/mojave/videos/trailer-hd.xml');">
+		              <title>Mojave</title>
+		              <image>https://trailers.apple.com/trailers/independent/mojave/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_3" accessibilityLabel="Diablo" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/diablo/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/diablo/videos/trailer-hd.xml');">
+		              <title>Diablo</title>
+		              <image>https://trailers.apple.com/trailers/independent/diablo/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_4" accessibilityLabel="Anguish" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/anguish/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/anguish/videos/trailer-hd.xml');">
+		              <title>Anguish</title>
+		              <image>https://trailers.apple.com/trailers/independent/anguish/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_5" accessibilityLabel="The Abandoned" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/ifcfilms/theabandoned/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/theabandoned/videos/trailer-hd.xml');">
+		              <title>The Abandoned</title>
+		              <image>https://trailers.apple.com/trailers/ifcfilms/theabandoned/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_6" accessibilityLabel="The Benefactor" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/thebenefactor/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/thebenefactor/videos/trailer-hd.xml');">
+		              <title>The Benefactor</title>
+		              <image>https://trailers.apple.com/trailers/independent/thebenefactor/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_7" accessibilityLabel="Eye in the Sky" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/eyeinthesky/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/eyeinthesky/videos/trailer-hd.xml');">
+		              <title>Eye in the Sky</title>
+		              <image>https://trailers.apple.com/trailers/independent/eyeinthesky/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+						 			<moviePoster id="shelf_item_8" accessibilityLabel="The World of Kanako" related="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/appletv/us/studios/independent/theworldofkanako/index-hd.xml');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/independent/theworldofkanako/videos/trailer-hd.xml');">
+		              <title>The World of Kanako</title>
+		              <image>https://trailers.apple.com/trailers/independent/theworldofkanako/images/poster-large.jpg</image>
+		              <defaultImage>resource://Poster.png</defaultImage>
+		            </moviePoster>
+				              </items>
+            </shelfSection>
+          </sections>
+        </shelf>
+      </bottomShelf>
+    </itemDetail>
+  </body>
+</atv>

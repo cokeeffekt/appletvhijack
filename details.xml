@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <atv>
+
+    <head>
+      <script src="https://trailers.apple.com/appletv/us/js/main.js" />
+      <script src="https://trailers.apple.com/appletv/us/js/Trailers.js" />
+      <script src="https://trailers.apple.com/appletv/us/js/Trailers.Showtimes.js" />
+      <script src="https://trailers.apple.com/appletv/us/js/Trailers.Log.js" />
+      <script src="https://trailers.apple.com/appletv/us/js/showtimesconfig.js" />
+      <stash>
+        <id>17119</id>
+        <fandangoId></fandangoId>
+        <title>A title or somthing</title>
+        <releasedate>2016-02-12</releasedate>
+        <studio>Independent</studio>
+        <runtime>95</runtime>
+        <rating>R</rating>
+      </stash>
+    </head>
+
+    <body>
+      <itemDetail id="com.apple.trailers">
+        <title>A title or somthing</title>
+        <subtitle>Independent</subtitle>
+        <rating>R</rating>
+        <summary>who cares</summary>
+        <image style="moviePoster">https://trailers.apple.com/trailers/independent/remember/images/poster-xlarge.jpg</image>
+        <defaultImage>resource://Poster.png</defaultImage>
+        <table>
+          <columnDefinitions>
+            <columnDefinition width="25" alignment="left">
+              <title>Details</title>
+            </columnDefinition>
+            <columnDefinition width="25" alignment="left">
+              <title>Actors</title>
+            </columnDefinition>
+            <columnDefinition width="25" alignment="left">
+              <title>Director</title>
+            </columnDefinition>
+            <columnDefinition width="25" alignment="left">
+              <title>Writer</title>
+            </columnDefinition>
+          </columnDefinitions>
+          <rows>
+            <row>
+              <label>meh</label>
+              <label>meh</label>
+              <label>meh</label>
+              <label>meh</label>
+            </row>
+            <row>
+              <label/>
+              <label/>
+              <label/>
+              <label/>
+            </row>
+            <row>
+              <label/>
+              <label/>
+              <label/>
+              <label/>
+            </row>
+            <row>
+              <label/>
+              <label/>
+              <label/>
+              <label/>
+            </row>
+            <row>
+              <label/>
+              <label/>
+              <label/>
+              <label/>
+            </row>
+          </rows>
+        </table>
+        <centerShelf>
+          <shelf id="centerShelf" columnCount="4" center="true">
+            <sections>
+              <shelfSection>
+                <items>
+                  <actionButton id="play" onSelect="atv.loadURL('https://trailers.apple.com/play/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
+                    <title>Play</title>
+                    <image>resource://Play.png</image>
+                    <focusedImage>resource://PlayFocused.png</focusedImage>
+                    <badge>SD</badge>
+                  </actionButton>
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>
+        </centerShelf>
+      </itemDetail>
+    </body>
+  </atv>

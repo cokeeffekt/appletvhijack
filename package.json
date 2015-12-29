@@ -1,0 +1,32 @@
+{
+  "name": "appletvhijack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "emergency-dns-server": "0.0.4",
+    "express": "^4.13.3",
+    "kickass-torrent": "0.0.3",
+    "lodash": "^3.10.1",
+    "mustache": "^2.2.1",
+    "optimist": "^0.6.1",
+    "request": "^2.67.0",
+    "webtorrent": "^0.63.4",
+    "xml2js": "^0.4.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cokeeffekt/appletvhijack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cokeeffekt/appletvhijack/issues"
+  },
+  "homepage": "https://github.com/cokeeffekt/appletvhijack#readme"
+}

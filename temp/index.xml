@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <atv>
+
+    <head>
+      <script src="https://trailers.apple.com/appletv/us/js/main.js" />
+    </head>
+
+    <body>
+      <scroller id="com.sample.movie-shelf">
+        <items>
+          <shelf id="shelf_1" columnCount="5">
+            <sections>
+              <shelfSection>
+                <items>
+                  <moviePoster id="shelf_item_1" accessibilityLabel="testing" featured="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/aperfectday/index-hd.xml');">
+                    <image>https://trailers.apple.com/appletv/us/images/promos/APerfectDay_300x151_20151223092003.jpg</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>
+                  <moviePoster id="shelf_item_2" accessibilityLabel="testing" featured="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/aperfectday/index-hd.xml');">
+                    <image>https://trailers.apple.com/appletv/us/images/promos/APerfectDay_300x151_20151223092003.jpg</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>
+                  <moviePoster id="shelf_item_3" accessibilityLabel="testing" featured="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/aperfectday/index-hd.xml');">
+                    <image>https://trailers.apple.com/appletv/us/images/promos/APerfectDay_300x151_20151223092003.jpg</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>
+                  <moviePoster id="shelf_item_4" accessibilityLabel="testing" featured="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/aperfectday/index-hd.xml');">
+                    <image>https://trailers.apple.com/appletv/us/images/promos/APerfectDay_300x151_20151223092003.jpg</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>
+                  <moviePoster id="shelf_item_5" accessibilityLabel="testing" featured="true" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/appletv/us/studios/ifcfilms/aperfectday/index-hd.xml');">
+                    <image>https://trailers.apple.com/appletv/us/images/promos/APerfectDay_300x151_20151223092003.jpg</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>
+
+          <collectionDivider alignment="left" accessibilityLabel="Just Added">
+            <title>Movies</title>
+          </collectionDivider>
+          <shelf id="shelf_2">
+            <sections>
+              <shelfSection>
+                <items>
+                  {{#movies}}
+                  <moviePoster id="shelf_item_6" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
+                    <title>{{title}}</title>
+                    <subtitle>{{seeds}}/{{leech}}</subtitle>
+                    <image>https://trailers.apple.com/trailers/independent/remember/images/poster-large.jpg</image>
+                    <defaultImage>resource://Poster.png</defaultImage>
+                  </moviePoster>
+                  {{/movies}}
+
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>
+
+
+
+          <collectionDivider alignment="left" accessibilityLabel="Top Movies in Theaters">
+            <title>More of the things.</title>
+          </collectionDivider>
+          <shelf id="shelf_3">
+            <sections>
+              <shelfSection>
+                <items>
+                  <moviePoster id="shelf_item_8" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
+                    <title>Something cool</title>
+                    <subtitle>blebeh</subtitle>
+                    <image>https://trailers.apple.com/trailers/independent/remember/images/poster-large.jpg</image>
+                    <defaultImage>resource://Poster.png</defaultImage>
+                  </moviePoster>
+
+                  <moviePoster id="shelf_item_9" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
+                    <title>Something cool</title>
+                    <subtitle>blebeh</subtitle>
+                    <image>https://trailers.apple.com/trailers/independent/remember/images/poster-large.jpg</image>
+                    <defaultImage>resource://Poster.png</defaultImage>
+                  </moviePoster>
+
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>
+        </items>
+      </scroller>
+    </body>
+  </atv>

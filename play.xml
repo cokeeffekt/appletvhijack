@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <atv>
+
+    <body>
+      <videoPlayer id="com.sample.video-player">
+        <httpFileVideoAsset id="teaser23800">
+          <mediaURL>https://trailers.apple.com:1337/{{hash}}</mediaURL>
+          <title>{{hash}}</title>
+          <description>{{hash}}</description>
+          <image>https://trailers.apple.com/trailers/independent/remember/images/thumbnail_23800.jpg</image>
+        </httpFileVideoAsset>
+      </videoPlayer>
+    </body>
+  </atv>
