@@ -7,7 +7,6 @@ var _ = require('lodash');
 var mustache = require('mustache');
 var WebTorrent = require('webtorrent');
 var client = new WebTorrent();
-var gis = require('g-i-s');
 
 
 // openssl req -new -nodes -newkey rsa:2048 -out trailers.pem -keyout trailers.key -x509 -days 365 -subj "/C=US/CN=trailers.apple.com"
@@ -53,6 +52,8 @@ app.get('/image/:search', function (req, res) {
   console.log('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X');
   request('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X', function (err, response, body) {
     var match = /src\=\"(https\:\/\/encrypted.+?)"/ig.exec(body);
+    if (!match)
+      return res.redirect(307, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRcv8CuL0uGCvSAIIBp29G8LtXQpc51EJhlbVTGhZRyz2HhQxTQIh6NxkcH');
     return res.redirect(307, match[1]);
   });
 });
@@ -220,7 +221,7 @@ http.createServer(function (req, res) {
       var displayComplete = setInterval(function () {
         var pDone = ((100 / torrent.length) * torrent.downloaded);
         console.log(pDone);
-        if (pDone > 98) {
+        if (pDone > 99) {
           clearInterval(displayComplete);
           // in an hour kill the torrent
           setTimeout(function () {
