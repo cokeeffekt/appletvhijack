@@ -7,6 +7,8 @@ var _ = require('lodash');
 var mustache = require('mustache');
 var WebTorrent = require('webtorrent');
 var client = new WebTorrent();
+var gis = require('g-i-s');
+
 
 // openssl req -new -nodes -newkey rsa:2048 -out trailers.pem -keyout trailers.key -x509 -days 365 -subj "/C=US/CN=trailers.apple.com"
 // openssl x509 -in trailers.pem -outform der -out trailers.cer && cat trailers.key >> trailers.pem
@@ -23,53 +25,74 @@ var app = express(),
   server = https.createServer(credentials, app);
 
 
-app.get('/play/:media', function (req, res) {
-  var tmp = fs.readFileSync('play.xml', {
+app.get('/play/:hash', function (req, res) {
+  res.header("Content-Type", "application/xml");
+  var tmp = fs.readFileSync('temp/play.xml', {
     encoding: 'utf8'
   });
-  res.send(tmp);
-
-});
-
-app.get('/details/:media', function (req, res) {
-  var tmp = fs.readFileSync('details.xml', {
-    encoding: 'utf8'
+  tmp = mustache.render(tmp, {
+    hash: req.params.hash
   });
   res.send(tmp);
 });
 
+app.get('/details/:name/:hash', function (req, res) {
+  res.header("Content-Type", "application/xml");
+  var tmp = fs.readFileSync('temp/details.xml', {
+    encoding: 'utf8'
+  });
+  tmp = mustache.render(tmp, {
+    name: req.params.name,
+    hash: req.params.hash
+  });
+  res.send(tmp);
+});
+
+//https://www.google.com.au/search?q=Arrow.S04E06.HDTV.x264-LOL%5Bettv%5D&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X
+app.get('/image/:search', function (req, res) {
+  console.log('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X');
+  request('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X', function (err, response, body) {
+    var match = /src\=\"(https\:\/\/encrypted.+?)"/ig.exec(body);
+    return res.redirect(307, match[1]);
+  });
+});
 
 app.get('/appletv/us/index.xml', function (req, res) {
 
   //https://thepiratebay.se/top/205
-  request('https://thepiratebay.vg/top/201', function (err, response, body) {
+  console.log('viewing index');
+  request('https://thepiratebay.se/top/205', function (err, response, body) {
     //  console.log(body);
+    console.log('loaded TV');
+
     var myRegexp = /class\=\"detLink\".+?\>(.+?)\<[\s\S]*?href\=\"(.+?)"[\s\S]*?align\=\"right\"\>([0-9]+)[\s\S]*?align\=\"right\"\>([0-9]+)/igm;
     var match = myRegexp.exec(body);
 
-    var listMovies = [];
+    var listTv = [];
     var count = 0;
     while (match != null) {
 
-      listMovies.push({
+      listTv.push({
         raw: match[1],
         count: count++,
         title: match[1].replace(/\./g, ' '),
         magnet: match[2],
         seeds: match[3],
         leech: match[4],
+        usTitle: encodeURI(match[1].replace(/\./g, ' ')),
+        usRaw: encodeURI(match[1]),
         infoHash: /btih:([a-z0-9]*)/i.exec(match[2])[1]
       });
       match = myRegexp.exec(body);
     }
-    //    console.log(listMovies);
 
     res.header("Content-Type", "application/xml");
-    var tmp = fs.readFileSync('temp/index.xml', {
+
+    var tmp = fs.readFileSync('temp/index.tmp.xml', {
       encoding: 'utf8'
     });
     tmp = mustache.render(tmp, {
-      movies: listMovies
+      listTv: listTv
     });
     res.send(tmp);
   });

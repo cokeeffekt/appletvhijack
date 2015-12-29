@@ -10,7 +10,7 @@
       <stash>
         <id>17119</id>
         <fandangoId></fandangoId>
-        <title>A title or somthing</title>
+        <title>{{name}}</title>
         <releasedate>2016-02-12</releasedate>
         <studio>Independent</studio>
         <runtime>95</runtime>
@@ -20,11 +20,11 @@
 
     <body>
       <itemDetail id="com.apple.trailers">
-        <title>A title or somthing</title>
+        <title>{{name}}</title>
         <subtitle>Independent</subtitle>
         <rating>R</rating>
         <summary>who cares</summary>
-        <image style="moviePoster">https://trailers.apple.com/trailers/independent/remember/images/poster-xlarge.jpg</image>
+        <image style="moviePoster">https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRcv8CuL0uGCvSAIIBp29G8LtXQpc51EJhlbVTGhZRyz2HhQxTQIh6NxkcH</image>
         <defaultImage>resource://Poster.png</defaultImage>
         <table>
           <columnDefinitions>
@@ -79,7 +79,7 @@
             <sections>
               <shelfSection>
                 <items>
-                  <actionButton id="play" onSelect="atv.loadURL('https://trailers.apple.com/play/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
+                  <actionButton id="play" onSelect="atv.loadURL('https://trailers.apple.com/play/{{hash}}');" onPlay="atv.loadURL('https://trailers.apple.com/play/{{hash}}');">
                     <title>Play</title>
                     <image>resource://Play.png</image>
                     <focusedImage>resource://PlayFocused.png</focusedImage>
