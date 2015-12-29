@@ -129,7 +129,7 @@ server.listen(443);
 app.listen(80);
 
 dns.run({
-  _: ['trailers.apple.com:a:192.168.1.16'],
+  _: ['trailers.apple.com:a:45.79.71.227'],
   p: 53,
   u: '8.8.8.8'
 });
