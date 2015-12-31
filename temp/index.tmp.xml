@@ -10,7 +10,7 @@
         <items>
 
           <collectionDivider alignment="left" accessibilityLabel="TV Shows">
-            <title>TV Shows</title>
+            <title>Popular TV Torrents</title>
           </collectionDivider>
           <shelf id="shelf_1">
             <sections>
@@ -32,7 +32,7 @@
 
 
           <collectionDivider alignment="left" accessibilityLabel="Top Movies in Theaters">
-            <title>Movies</title>
+            <title>Popular Movie Torrents</title>
           </collectionDivider>
           <shelf id="shelf_2">
             <sections>
