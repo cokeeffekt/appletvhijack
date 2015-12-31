@@ -1,3 +1,5 @@
+var pbget = require('./pbget');
+
 var dns = require('emergency-dns-server');
 var express = require('express');
 var https = require('https');
@@ -40,16 +42,32 @@ app.get('/details/:name/:hash', function (req, res) {
   var tmp = fs.readFileSync('temp/details.xml', {
     encoding: 'utf8'
   });
-  tmp = mustache.render(tmp, {
-    name: req.params.name,
-    hash: req.params.hash
+
+  var search = req.params.name.split(/(s[0-9]{1,2}e[0-9]{1,2}|(?:19|20)[0-9]{2})/i);
+  search = encodeURI(search[0].trim(' '));
+
+  console.log(search);
+
+  pbget(['/search/' + search + '/0/99/0'], function (list) {
+
+    console.log()
+    tmp = mustache.render(tmp, {
+      name: req.params.name,
+      usName: encodeURI(req.params.name),
+      hash: req.params.hash,
+      morelike: search,
+      list: _.find(list, {
+        path: '/search/' + search + '/0/99/0'
+      }).list
+    });
+    res.send(tmp);
   });
-  res.send(tmp);
+
+
 });
 
 //https://www.google.com.au/search?q=Arrow.S04E06.HDTV.x264-LOL%5Bettv%5D&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X
 app.get('/image/:search', function (req, res) {
-  console.log('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X');
   request('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X', function (err, response, body) {
     var match = /src\=\"(https\:\/\/encrypted.+?)"/ig.exec(body);
     if (!match)
@@ -62,30 +80,8 @@ app.get('/appletv/us/index.xml', function (req, res) {
 
   //https://thepiratebay.se/top/205
   console.log('viewing index');
-  request('https://thepiratebay.se/top/205', function (err, response, body) {
-    //  console.log(body);
-    console.log('loaded TV');
 
-    var myRegexp = /class\=\"detLink\".+?\>(.+?)\<[\s\S]*?href\=\"(.+?)"[\s\S]*?align\=\"right\"\>([0-9]+)[\s\S]*?align\=\"right\"\>([0-9]+)/igm;
-    var match = myRegexp.exec(body);
-
-    var listTv = [];
-    var count = 0;
-    while (match != null) {
-
-      listTv.push({
-        raw: match[1],
-        count: count++,
-        title: match[1].replace(/\./g, ' '),
-        magnet: match[2],
-        seeds: match[3],
-        leech: match[4],
-        usTitle: encodeURI(match[1].replace(/\./g, ' ')),
-        usRaw: encodeURI(match[1]),
-        infoHash: /btih:([a-z0-9]*)/i.exec(match[2])[1]
-      });
-      match = myRegexp.exec(body);
-    }
+  pbget(['/top/205'], function (list) {
 
     res.header("Content-Type", "application/xml");
 
@@ -93,10 +89,14 @@ app.get('/appletv/us/index.xml', function (req, res) {
       encoding: 'utf8'
     });
     tmp = mustache.render(tmp, {
-      listTv: listTv
+      listTv: _.find(list, {
+        path: '/top/205'
+      }).list
     });
     res.send(tmp);
+
   });
+
 
 });
 
@@ -122,8 +122,6 @@ app.get('*', function (req, res) {
   console.log(req._parsedUrl);
   res.send('Hello World');
 });
-
-
 
 server.listen(443);
 app.listen(80);
@@ -186,9 +184,9 @@ http.createServer(function (req, res) {
         end: end
       });
 
-      file.on('data', function (e) {
-        console.log(e);
-      });
+      //      file.on('data', function (e) {
+      //        console.log(e);
+      //      });
       res.writeHead(206, {
         'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
         'Accept-Ranges': 'bytes',
@@ -205,10 +203,6 @@ http.createServer(function (req, res) {
       });
       playFile.createReadStream().pipe(res);
     }
-
-    //  res.header("Content-Length", playFile.length);
-    //  var stream = playFile.createReadStream();
-    //  stream.pipe(res);
   }
 
   var torrentExists = _.find(client.torrents, {
@@ -235,33 +229,3 @@ http.createServer(function (req, res) {
     streamTor(torrentExists);
 
 }).listen(8888);
-
-
-
-
-
-//request({
-//  url: 'https://kat.cr/usearch/dvdrip%20category%3Amovies%20age%3Amonth%20lang_id%3A2%20verified%3A1/?rss=1',
-//  gzip: true
-//}, function (err, response, body) {
-//  parseXml(body, function (err, result) {
-//    console.log(result.rss.channel[0].item);
-//  });
-//});
-
-
-
-
-//
-//var WebTorrent = require('webtorrent');
-//
-//var client = new WebTorrent();
-//
-//client.add('https://torcache.net/torrent/3139040B4287FE6DD2B3FC0A8684BC623261F381.torrent', function (torrent) {
-//  setInterval(function () {
-//
-//    console.log(torrent.name);
-//    console.log(_.keys(torrent));
-//    console.log(((100 / torrent.length) * torrent.downloaded).toFixed(2) + '%');
-//  }, 3000);
-//});

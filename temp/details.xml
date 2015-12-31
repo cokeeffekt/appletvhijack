@@ -24,7 +24,7 @@
         <subtitle>Independent</subtitle>
         <rating>R</rating>
         <summary>who cares</summary>
-        <image style="moviePoster">https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRcv8CuL0uGCvSAIIBp29G8LtXQpc51EJhlbVTGhZRyz2HhQxTQIh6NxkcH</image>
+        <image style="moviePoster">https://trailers.apple.com/image/{{usName}}</image>
         <defaultImage>resource://Poster.png</defaultImage>
         <table>
           <columnDefinitions>
@@ -90,6 +90,29 @@
             </sections>
           </shelf>
         </centerShelf>
+        <divider>
+          <smallCollectionDivider alignment="left">
+            <title>More like {{morelike}}</title>
+          </smallCollectionDivider>
+        </divider>
+        <bottomShelf>
+          <shelf id="bottomShelf" columnCount="8">
+            <sections>
+              <shelfSection>
+                <items>
+                  {{#list}}
+                  <moviePoster id="shelf_item_{{count}}" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/{{usTitle}}/{{infoHash}}');" onPlay="atv.loadURL('https://trailers.apple.com/play/{{infoHash}}');">
+                    <title>{{title}}</title>
+                    <subtitle>{{seeds}}/{{leech}}</subtitle>
+                    <image>https://trailers.apple.com/image/{{usTitle}}</image>
+                    <defaultImage>resource://Poster.png</defaultImage>
+                  </moviePoster>
+                  {{/list}}
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>
+        </bottomShelf>
       </itemDetail>
     </body>
   </atv>

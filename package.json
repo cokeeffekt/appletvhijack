@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "easy-ffmpeg": "0.0.8",
     "emergency-dns-server": "0.0.4",
     "express": "^4.13.3",
     "g-i-s": "^1.0.1",
