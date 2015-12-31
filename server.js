@@ -53,7 +53,7 @@ app.get('/details/:name/:hash', function (req, res) {
       hash: req.params.hash,
       morelike: search,
       list: _.find(list, {
-        path: '/search/' + encodeURI(search) + '/0/99/0'
+        path: '/search/' + encodeURI(search) + '/0/99/200'
       }).list
     });
     res.send(tmp);
@@ -114,7 +114,7 @@ app.get('/trailers/global/atv/search.php', function (req, res) {
       hash: req.params.hash,
       morelike: search,
       list: _.find(list, {
-        path: '/search/' + encodeURI(search) + '/0/99/0'
+        path: '/search/' + encodeURI(search) + '/0/99/200'
       }).list
     });
     res.send(tmp);
@@ -126,7 +126,7 @@ app.get('/appletv/us/index.xml', function (req, res) {
   //https://thepiratebay.se/top/205
   console.log('viewing index');
 
-  pbget(['/top/205'], function (list) {
+  pbget(['/top/205', '/top/201'], function (list) {
 
     res.header("Content-Type", "application/xml");
 
@@ -136,6 +136,9 @@ app.get('/appletv/us/index.xml', function (req, res) {
     tmp = mustache.render(tmp, {
       listTv: _.find(list, {
         path: '/top/205'
+      }).list,
+      listMov: _.find(list, {
+        path: '/top/201'
       }).list
     });
     res.send(tmp);
@@ -201,14 +204,9 @@ http.createServer(function (req, res) {
           playFile = f;
       });
 
-    if (!_.contains(playFile.name.toLowerCase(), '.mp4')) {
-      torrent.destroy();
-      res.writeHead(500);
-      res.end();
-      console.log('notmp4');
-      return;
-    } else {
-      console.log('started');
+    var vidtype = 'mp4';
+    if (_.contains(playFile.name.toLowerCase(), '.avi')) {
+      vidtype = 'avi'
     }
 
     var total = playFile.length;
@@ -236,14 +234,14 @@ http.createServer(function (req, res) {
         'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
         'Accept-Ranges': 'bytes',
         'Content-Length': chunksize,
-        'Content-Type': 'video/mp4'
+        'Content-Type': 'video/' + vidtype
       });
       file.pipe(res);
     } else {
       console.log('ALL: ' + total);
       res.writeHead(200, {
         'Content-Length': total,
-        'Content-Type': 'video/mp4',
+        'Content-Type': 'video/' + vidtype,
         'filename': playFile.name
       });
       playFile.createReadStream().pipe(res);

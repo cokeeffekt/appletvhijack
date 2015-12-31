@@ -32,25 +32,20 @@
 
 
           <collectionDivider alignment="left" accessibilityLabel="Top Movies in Theaters">
-            <title>More of the things.</title>
+            <title>Movies</title>
           </collectionDivider>
           <shelf id="shelf_2">
             <sections>
               <shelfSection>
                 <items>
-                  <moviePoster id="shelf_item_8" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
-                    <title>Something cool</title>
-                    <subtitle>blebeh</subtitle>
-                    <image>https://trailers.apple.com/trailers/independent/remember/images/poster-large.jpg</image>
+                  {{#listMov}}
+                  <moviePoster id="shelf_item_{{count}}" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/{{usTitle}}/{{infoHash}}');" onPlay="atv.loadURL('https://trailers.apple.com/play/{{infoHash}}');">
+                    <title>{{title}}</title>
+                    <subtitle>{{seeds}}/{{leech}}</subtitle>
+                    <image>https://trailers.apple.com/image/{{usTitle}}</image>
                     <defaultImage>resource://Poster.png</defaultImage>
                   </moviePoster>
-
-                  <moviePoster id="shelf_item_9" accessibilityLabel="Something cool" onSelect="loadTrailerDetailPage('https://trailers.apple.com/details/testing');" onPlay="atv.loadURL('https://trailers.apple.com/play/testing');">
-                    <title>Something cool</title>
-                    <subtitle>blebeh</subtitle>
-                    <image>https://trailers.apple.com/trailers/independent/remember/images/poster-large.jpg</image>
-                    <defaultImage>resource://Poster.png</defaultImage>
-                  </moviePoster>
+                  {{/listMov}}
 
                 </items>
               </shelfSection>
