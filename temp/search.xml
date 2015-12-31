@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <atv>
+
+    <body>
+      <searchResults id="trailers.searchResults">
+        <menu>
+          <sections>
+            <menuSection>
+              <header>
+                <horizontalDivider alignment="center" accessibilityLabel="Trailers">
+                  <title>Matching Torrent Titles</title>
+                </horizontalDivider>
+              </header>
+              <items>
+                {{#list}}
+                <posterMenuItem id="trailer_{{count}}" accessibilityLabel="Poster Menu Item for Movie 1" onSelect="atv.loadURL('https://trailers.apple.com/details/{{usTitle}}/{{infoHash}}');" onPlay="atv.loadURL('https://trailers.apple.com/play/{{infoHash}}');">
+                  <label>{{title}}</label>
+                  <image>https://trailers.apple.com/image/{{usTitle}}</image>
+                </posterMenuItem>
+                {{/list}}
+
+              </items>
+            </menuSection>
+          </sections>
+        </menu>
+      </searchResults>
+    </body>
+  </atv>

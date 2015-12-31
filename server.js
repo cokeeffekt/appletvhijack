@@ -46,11 +46,7 @@ app.get('/details/:name/:hash', function (req, res) {
   var search = req.params.name.split(/(s[0-9]{1,2}e[0-9]{1,2}|(?:19|20)[0-9]{2})/i);
   search = search[0].trim(' ');
 
-  console.log(search);
-
   pbget(['/search/' + encodeURI(search) + '/0/99/0'], function (list) {
-
-    console.log()
     tmp = mustache.render(tmp, {
       name: req.params.name,
       usName: encodeURI(req.params.name),
@@ -91,11 +87,38 @@ app.get('/image/:search', function (req, res) {
 });
 
 app.get('/appletv/us/searchtrailers.xml', function (req, res) {
+  res.header("Content-Type", "application/xml");
+
   var tmp = fs.readFileSync('temp/searchtrailers.xml', {
     encoding: 'utf8'
   });
   tmp = mustache.render(tmp, {});
   res.send(tmp);
+});
+
+app.get('/trailers/global/atv/search.php', function (req, res) {
+
+  res.header("Content-Type", "application/xml");
+  var tmp = fs.readFileSync('temp/search.xml', {
+    encoding: 'utf8'
+  });
+
+  var search = req.query.q;
+
+
+  pbget(['/search/' + encodeURI(search) + '/0/99/0'], function (list) {
+    console.log()
+    tmp = mustache.render(tmp, {
+      name: req.params.name,
+      usName: encodeURI(req.params.name),
+      hash: req.params.hash,
+      morelike: search,
+      list: _.find(list, {
+        path: '/search/' + encodeURI(search) + '/0/99/0'
+      }).list
+    });
+    res.send(tmp);
+  });
 });
 
 app.get('/appletv/us/index.xml', function (req, res) {
