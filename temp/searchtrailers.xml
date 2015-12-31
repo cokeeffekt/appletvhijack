@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><atv>
-  <body>
-    <search id="com.trailers.search">
-      <header>
-        <simpleHeader accessibilityLabel="Search Trailers">
-          <title>Search Trailers</title>
-        </simpleHeader>
-      </header>
-      <baseURL>https://trailers.apple.com/trailers/global/atv/search.php?q=</baseURL>
-    </search>
-  </body>
-</atv>
+<?xml version="1.0" encoding="UTF-8"?>
+  <atv>
+
+    <body>
+      <search id="com.trailers.search">
+        <header>
+          <simpleHeader accessibilityLabel="Search Torrents">
+            <title>Search Torrents</title>
+          </simpleHeader>
+        </header>
+        <baseURL>https://trailers.apple.com/trailers/global/atv/search.php?q=</baseURL>
+      </search>
+    </body>
+  </atv>
