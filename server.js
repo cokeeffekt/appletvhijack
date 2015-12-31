@@ -44,11 +44,11 @@ app.get('/details/:name/:hash', function (req, res) {
   });
 
   var search = req.params.name.split(/(s[0-9]{1,2}e[0-9]{1,2}|(?:19|20)[0-9]{2})/i);
-  search = encodeURI(search[0].trim(' '));
+  search = search[0].trim(' ');
 
   console.log(search);
 
-  pbget(['/search/' + search + '/0/99/0'], function (list) {
+  pbget(['/search/' + encodeURI(search) + '/0/99/0'], function (list) {
 
     console.log()
     tmp = mustache.render(tmp, {
@@ -57,21 +57,35 @@ app.get('/details/:name/:hash', function (req, res) {
       hash: req.params.hash,
       morelike: search,
       list: _.find(list, {
-        path: '/search/' + search + '/0/99/0'
+        path: '/search/' + encodeURI(search) + '/0/99/0'
       }).list
     });
     res.send(tmp);
   });
-
-
 });
 
 //https://www.google.com.au/search?q=Arrow.S04E06.HDTV.x264-LOL%5Bettv%5D&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X
+var imgCache = [];
 app.get('/image/:search', function (req, res) {
-  request('https://www.google.com.au/search?q=' + req.params.search + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X', function (err, response, body) {
+  var search = req.params.search.split(/(s[0-9]{1,2}e[0-9]{1,2}|(?:19|20)[0-9]{2})/i)[0] + 'dvd cover';
+
+  var inCache = _.find(imgCache, {
+    search: search
+  });
+
+  if (inCache)
+    return res.redirect(307, inCache.image);
+
+  request('https://www.google.com.au/search?q=' + encodeURI(search) + '&safe=off&gbv=1&tbs=iar:t,isz:m&tbm=isch&source=lnt&sa=X', function (err, response, body) {
     var match = /src\=\"(https\:\/\/encrypted.+?)"/ig.exec(body);
     if (!match)
       return res.redirect(307, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRcv8CuL0uGCvSAIIBp29G8LtXQpc51EJhlbVTGhZRyz2HhQxTQIh6NxkcH');
+
+    imgCache.push({
+      search: search,
+      image: match[1]
+    });
+    console.log('searched' + search);
     return res.redirect(307, match[1]);
   });
 });
