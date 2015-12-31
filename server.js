@@ -46,7 +46,7 @@ app.get('/details/:name/:hash', function (req, res) {
   var search = req.params.name.split(/(s[0-9]{1,2}e[0-9]{1,2}|(?:19|20)[0-9]{2})/i);
   search = search[0].trim(' ');
 
-  pbget(['/search/' + encodeURI(search) + '/0/99/0'], function (list) {
+  pbget(['/search/' + encodeURI(search) + '/0/99/200'], function (list) {
     tmp = mustache.render(tmp, {
       name: req.params.name,
       usName: encodeURI(req.params.name),
@@ -106,7 +106,7 @@ app.get('/trailers/global/atv/search.php', function (req, res) {
   var search = req.query.q;
 
 
-  pbget(['/search/' + encodeURI(search) + '/0/99/0'], function (list) {
+  pbget(['/search/' + encodeURI(search) + '/0/99/200'], function (list) {
     console.log()
     tmp = mustache.render(tmp, {
       name: req.params.name,
