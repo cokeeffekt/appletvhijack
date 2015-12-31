@@ -90,6 +90,14 @@ app.get('/image/:search', function (req, res) {
   });
 });
 
+app.get('/appletv/us/searchtrailers.xml', function (req, res) {
+  var tmp = fs.readFileSync('temp/searchtrailers.xml', {
+    encoding: 'utf8'
+  });
+  tmp = mustache.render(tmp, {});
+  res.send(tmp);
+});
+
 app.get('/appletv/us/index.xml', function (req, res) {
 
   //https://thepiratebay.se/top/205
