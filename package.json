@@ -4,11 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "easy-ffmpeg": "0.0.8",
     "emergency-dns-server": "0.0.4",
     "express": "^4.13.3",
-    "g-i-s": "^1.0.1",
-    "kickass-torrent": "0.0.3",
     "lodash": "^3.10.1",
     "mustache": "^2.2.1",
     "optimist": "^0.6.1",
