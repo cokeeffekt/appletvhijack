@@ -214,10 +214,13 @@ http.createServer(function (req, res) {
     var vidtype = 'mp4';
     if (_.contains(playFile.name.toLowerCase(), '.avi')) {
       vidtype = 'avi';
+      console.log('hhhh ' + req.headers['user-agent']);
       if (req.headers['user-agent'] != 'https://github.com/sindresorhus/got') {
         res.writeHead(301, {
           Location: 'http://45.79.71.227:8889/' + hash
+            //          Location: 'http://localhost:8889/' + hash
         });
+        console.log('sentaway');
         res.end();
         return;
       }
@@ -300,7 +303,8 @@ http.createServer(function (req, res) {
   var hash = req.url.replace(/[^0-9a-z]/ig, '').toLowerCase();
 
   res.writeHead(200, {
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'video/mp4'
   });
 
 
@@ -324,10 +328,6 @@ http.createServer(function (req, res) {
   args = ['-i', '-'].concat(args);
   args.push('pipe:1');
   console.log('spawning ffmpeg %s', args.join(' '));
-
-  res.writeHead(200, {
-    'Content-Type': 'video/mp4'
-  });
 
   trans.stream().pipe(res);
 }).listen(8889);
