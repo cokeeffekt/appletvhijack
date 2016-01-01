@@ -213,7 +213,14 @@ http.createServer(function (req, res) {
 
     var vidtype = 'mp4';
     if (_.contains(playFile.name.toLowerCase(), '.avi')) {
-      vidtype = 'avi'
+      vidtype = 'avi';
+      if (req.headers['user-agent'] != 'https://github.com/sindresorhus/got') {
+        res.writeHead(301, {
+          Location: 'http://45.79.71.227:8889/' + hash
+        });
+        res.end();
+        return;
+      }
     }
 
     var total = playFile.length;
@@ -270,7 +277,7 @@ http.createServer(function (req, res) {
           // in an hour kill the torrent
           setTimeout(function () {
             torrent.destroy();
-          }, 1000 * 60 * 60);
+          }, 3600000 * 2);
         }
 
       }, 5000);
