@@ -308,7 +308,7 @@ http.createServer(function (req, res) {
   });
 
 
-  var s = got('http://localhost:8888/' + hash);
+  var s = got('http://127.0.0.1:8888/' + hash);
   //  s.on('error', function (err) {
   //    console.log('got error: %o', err);
   //  });
@@ -330,4 +330,5 @@ http.createServer(function (req, res) {
   console.log('spawning ffmpeg %s', args.join(' '));
 
   trans.stream().pipe(res);
+
 }).listen(8889);
