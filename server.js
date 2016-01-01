@@ -9,7 +9,8 @@ var _ = require('lodash');
 var mustache = require('mustache');
 var WebTorrent = require('webtorrent');
 var client = new WebTorrent();
-
+var got = require('got');
+var Transcoder = require('stream-transcoder');
 
 // openssl req -new -nodes -newkey rsa:2048 -out trailers.pem -keyout trailers.key -x509 -days 365 -subj "/C=US/CN=trailers.apple.com"
 // openssl x509 -in trailers.pem -outform der -out trailers.cer && cat trailers.key >> trailers.pem
@@ -31,8 +32,14 @@ app.get('/play/:hash', function (req, res) {
   var tmp = fs.readFileSync('temp/play.xml', {
     encoding: 'utf8'
   });
+  var port = 8888;
+  if (_.contains(req.params.hash.toLowerCase(), 'xvid'))
+    port = 8889;
+
+
   tmp = mustache.render(tmp, {
-    hash: req.params.hash
+    hash: req.params.hash,
+    port: port
   });
   res.send(tmp);
 });
@@ -272,3 +279,48 @@ http.createServer(function (req, res) {
     streamTor(torrentExists);
 
 }).listen(8888);
+
+
+
+http.createServer(function (req, res) {
+
+  if (req.url == '/favicon.ico') {
+    res.writeHead(200);
+    res.end();
+    return;
+  }
+
+  var hash = req.url.replace(/[^0-9a-z]/ig, '').toLowerCase();
+
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*'
+  });
+
+
+  var s = got('http://localhost:8888/' + hash);
+  //  s.on('error', function (err) {
+  //    console.log('got error: %o', err);
+  //  });
+
+  var trans = new Transcoder(s)
+    .videoCodec('h264')
+    .format('mp4')
+    .custom('strict', 'experimental')
+    .on('finish', function () {
+      console.log('finished transcoding');
+    })
+    .on('error', function (err) {
+      console.log('transcoding error: %o', err);
+    });
+
+  var args = trans._compileArguments();
+  args = ['-i', '-'].concat(args);
+  args.push('pipe:1');
+  console.log('spawning ffmpeg %s', args.join(' '));
+
+  res.writeHead(200, {
+    'Content-Type': 'video/mp4'
+  });
+
+  trans.stream().pipe(res);
+}).listen(8889);

@@ -13,8 +13,10 @@
     "mustache": "^2.2.1",
     "optimist": "^0.6.1",
     "request": "^2.67.0",
+    "stream-transcoder": "0.0.5",
     "webtorrent": "^0.63.4",
-    "xml2js": "^0.4.15"
+    "xml2js": "^0.4.15",
+    "got": "^1.2.2"
   },
   "devDependencies": {},
   "scripts": {
